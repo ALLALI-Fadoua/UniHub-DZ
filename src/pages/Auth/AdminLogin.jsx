@@ -54,10 +54,6 @@ const AdminLogin = () => {
           {loading ? 'Connexion...' : 'Accéder au dashboard'}
         </Button>
       </form>
-
-      <p style={{ fontSize: '0.78rem', marginTop: 14, textAlign: 'center' }}>
-        Démo : admin@unihubdz.com (mot de passe libre)
-      </p>
     </AuthLayout>
   );
 };

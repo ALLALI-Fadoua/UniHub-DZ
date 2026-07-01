@@ -61,11 +61,6 @@ const Login = () => {
           {loading ? 'Connexion...' : 'Se connecter'}
         </Button>
       </form>
-
-      <p style={{ fontSize: '0.78rem', marginTop: 14, textAlign: 'center' }}>
-        Démo : amine.belkacem@etu.dz / lina.cherif@etu.dz (mot de passe libre,
-        4 caractères min.)
-      </p>
     </AuthLayout>
   );
 };
