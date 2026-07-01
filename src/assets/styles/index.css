@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/*
+ * Toutes les valeurs de marque vivent ici. @theme génère à la fois :
+ *  - de vraies variables CSS sur :root (donc tout le CSS pas encore migré
+ *    vers Tailwind continue de fonctionner sans aucune modification)
+ *  - les classes utilitaires correspondantes (bg-primary, shadow-lg, etc.)
+ */
+@theme {
+  --color-primary: #2563eb;
+  --color-secondary: #3b82f6;
+  --color-accent: #10b981;
+  --color-background: #f8fafc;
+  --color-card: #ffffff;
+  --color-title: #0f172a;
+  --color-text: #475569;
+  --color-border: #e2e8f0;
+
+  --color-primary-hover: #1d4ed8;
+  --color-accent-hover: #059669;
+  --color-text-muted: #94a3b8;
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+  --color-warning: #f59e0b;
+  --color-warning-strong: #b45309;
+  --color-overlay: rgba(15, 23, 42, 0.55);
+
+  --font-display: "Cairo", "Poppins", sans-serif;
+  --font-body: "Inter", "Poppins", sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.12);
+
+  --animate-pulse-dot: pulse-dot 1.8s ease-in-out infinite;
+  --animate-card-in-1: card-in-1 0.6s ease 0.05s forwards;
+  --animate-card-in-2: card-in-2 0.6s ease 0.18s forwards;
+  --animate-card-in-3: card-in-3 0.6s ease 0.3s forwards;
+}
+
+:root {
+  --container-max: 1180px;
+  --nav-height: 72px;
+}
+
+/* .container reste une classe globale : utilisée par TOUTES les pages,
+   migrées ou non vers Tailwind. */
+@utility container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-title);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+}
+@keyframes card-in-1 {
+  from { opacity: 0; transform: rotate(-6deg) translate(-26px, 34px); }
+  to { opacity: 1; transform: rotate(-6deg) translate(-26px, 18px); }
+}
+@keyframes card-in-2 {
+  from { opacity: 0; transform: rotate(3deg) translate(22px, 10px); }
+  to { opacity: 1; transform: rotate(3deg) translate(22px, -6px); }
+}
+@keyframes card-in-3 {
+  from { opacity: 0; transform: translateY(44px) scale(1.02); }
+  to { opacity: 1; transform: translateY(28px) scale(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
